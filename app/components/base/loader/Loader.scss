@@ -1,0 +1,76 @@
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+
+  &::before {
+    content: "";
+    padding: calc(var(--loader-size, 1em) / 2);
+    border: var(--loader-thickness, 3px) solid var(--loader-color, rgba(black, 0.5));
+    border-right-color: var(--loader-part-color, rgba(black, 1));
+    border-radius: 50%;
+
+    animation: 1s linear infinite spin;
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  &--white {
+    --loader-color: #{rgba(white, 0.5)};
+    --loader-part-color: #{rgba(white, 1)};
+  }
+
+  &--large {
+    &::before {
+      padding: calc(var(--loader-size, 4em) / 2);
+    }
+  }
+
+  &--big {
+    &::before {
+      padding: calc(var(--loader-size, 3em) / 2);
+    }
+  }
+
+  &--medium {
+    &::before {
+      padding: calc(var(--loader-size, 2em) / 2);
+    }
+  }
+
+
+}
+
+/* Cover */
+
+.loader-cover {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 1;
+
+  margin: auto;
+  //padding: 5em;
+
+  &--absolute {
+    position: absolute;
+    inset: 0;
+  }
+
+  &--dimmed {
+    background: rgba(black, 0.75);
+  }
+}

@@ -1,8 +1,48 @@
 'use client';
+import { useCountries } from '@/app/hooks/useCountries';
+import { useSearchModal } from '@/app/store/hooks/useSearchModal';
+import { differenceInDays } from 'date-fns';
+import { useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
 import { BiSearch } from 'react-icons/bi';
 export const Search = () => {
+  const searchModal = useSearchModal();
+  const params = useSearchParams();
+  const { getByValue } = useCountries();
+
+  const locationValue = params?.get('locationValue');
+  const startDate = params?.get('startDate');
+  const endDate = params?.get('endDate');
+  const guestCount = params?.get('guestCount');
+
+  const locationLabel = useMemo(
+    () =>
+      locationValue ? getByValue(locationValue as string)?.label : 'Anywhere',
+    [locationValue, getByValue]
+  );
+
+  const durationLabel = useMemo(() => {
+    if (startDate && endDate) {
+      const start = new Date(startDate as string);
+      const end = new Date(endDate as string);
+      let diff = differenceInDays(end, start);
+
+      if (diff == 0) diff = 1;
+
+      return `${diff} Days`;
+    }
+
+    return 'Any Week';
+  }, [startDate, endDate]);
+
+  const guestLabel = useMemo(
+    () => (guestCount ? `${guestCount} Guests` : 'Add Guests'),
+    [guestCount]
+  );
+
   return (
     <div
+      onClick={searchModal.onOpen}
       className="
        border-[1px]
        w-full
@@ -23,7 +63,7 @@ export const Search = () => {
           justify-between
       "
       >
-        <div className="text-sm px-6 font-semibold">Anywhere</div>
+        <div className="text-sm px-6 font-semibold">{locationLabel}</div>
         <div
           className="
             hidden
@@ -36,7 +76,7 @@ export const Search = () => {
             text-center
           "
         >
-          Any Week
+          {durationLabel}
         </div>
         <div
           className="
@@ -50,7 +90,7 @@ export const Search = () => {
           gap-3
         "
         >
-          <div className="hidden sm:block"> Add guests</div>
+          <div className="hidden sm:block">{guestLabel}</div>
           <div className="p-2 bg-rose-500 rounded-full text-white">
             <BiSearch />
           </div>

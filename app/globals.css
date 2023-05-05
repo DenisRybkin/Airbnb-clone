@@ -7,3 +7,30 @@ body,
 :root {
   height: 100%;
 }
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+.rdrMonth {
+  width: 100% !important;
+}
+
+.rdrCalendarWrapper {
+  font-size: 16px !important;
+  width: 100% !important;
+}
+.rdrMonthPicker select option {
+  background-color: white;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+}
+.rdrMonthPicker,.rdrYearPicker select option:hover {
+  background-color: rgb(245 245 245 / 1) !important;
+}

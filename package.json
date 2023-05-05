@@ -1,5 +1,5 @@
 {
-  "name": "airbnb-clonei",
+  "name": "airbnb-clone",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -34,6 +34,8 @@
     "react-leaflet": "^4.2.1",
     "react-select": "^5.7.2",
     "react-spinners": "^0.13.8",
+    "react-use": "^17.4.0",
+    "sass": "^1.62.1",
     "swr": "^2.1.1",
     "typescript": "5.0.2",
     "world-countries": "^4.0.0",
@@ -46,6 +48,7 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "prettier": "2.8.7",
+    "prettier-plugin-organize-imports": "^3.2.2",
     "prisma": "^4.11.0",
     "tailwindcss": "^3.2.7"
   }

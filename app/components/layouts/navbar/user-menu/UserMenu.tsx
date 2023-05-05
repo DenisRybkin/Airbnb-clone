@@ -1,18 +1,50 @@
 'use client';
+import { useLoginModal } from '@/app/store/hooks/useLoginModal';
+import { useRegisterModal } from '@/app/store/hooks/useRegisterModal';
+import { useRentModal } from '@/app/store/hooks/useRentModal';
+import { UserDto } from '@/app/types/DTO/user';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useRef, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { Avatar } from '../../../elements/avatar/Avatar';
-import { useState } from 'react';
+import { useClickAway } from 'react-use';
+import { Avatar } from '../../../base/avatar/Avatar';
 import { MenuItem } from './MenuItem';
-export const UserMenu = () => {
+
+interface UserMenuProps {
+  currentUser?: UserDto | null;
+}
+
+export const UserMenu: React.FC<UserMenuProps> = props => {
+  const router = useRouter();
+
+  const registerModal = useRegisterModal();
+  const rentModal = useRentModal();
+  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const parentRef = useRef<HTMLDivElement>(null);
+  const handleClose = () => setIsOpen(false);
 
   const toggleOpen = () => setIsOpen(prev => !prev);
 
+  const handleClickMenuItem = (callback: () => void) => () => {
+    callback();
+    handleClose();
+  };
+
+  const handleRent = props.currentUser ? rentModal.onOpen : loginModal.onOpen;
+  const handleRedirectToTrips = () => router.push('/trips');
+  const handleRedirectToReservations = () => router.push('/reservations');
+  const handleRedirectToFavorites = () => router.push('/favorites');
+  const handleRedirectToProperties = () => router.push('/properties');
+
+  useClickAway(parentRef, handleClose);
+
   return (
-    <div className="relative">
+    <div ref={parentRef} className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          //onClick={toggleOpen}
+          onClick={handleRent}
           className="
             hidden
             md:block
@@ -48,7 +80,7 @@ export const UserMenu = () => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={props.currentUser?.image} />
           </div>
         </div>
       </div>
@@ -68,10 +100,46 @@ export const UserMenu = () => {
         "
         >
           <div className="flex flex-col cursor-pointer">
-            <>
-              <MenuItem onClick={() => {}} label="Sign in" />
-              <MenuItem onClick={() => {}} label="Sign up" />
-            </>
+            {props.currentUser ? (
+              <>
+                <MenuItem
+                  onClick={handleClickMenuItem(handleRedirectToTrips)}
+                  label="My trips"
+                />
+                <MenuItem
+                  onClick={handleClickMenuItem(handleRedirectToFavorites)}
+                  label="My favorites"
+                />
+                <MenuItem
+                  onClick={handleClickMenuItem(handleRedirectToReservations)}
+                  label="My reservations"
+                />
+                <MenuItem
+                  onClick={handleClickMenuItem(handleRedirectToProperties)}
+                  label="My properties"
+                />
+                <MenuItem
+                  onClick={handleClickMenuItem(rentModal.onOpen)}
+                  label="Airbnb my home"
+                />
+                <hr />
+                <MenuItem
+                  onClick={handleClickMenuItem(signOut)}
+                  label="Log out"
+                />
+              </>
+            ) : (
+              <>
+                <MenuItem
+                  onClick={handleClickMenuItem(loginModal.onOpen)}
+                  label="Login"
+                />
+                <MenuItem
+                  onClick={handleClickMenuItem(registerModal.onOpen)}
+                  label="Sign up"
+                />
+              </>
+            )}
           </div>
         </div>
       )}
