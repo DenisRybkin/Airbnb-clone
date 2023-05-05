@@ -33,7 +33,7 @@ export const useCountries = (): IUseCountries => {
     `https://flagcdn.com/24x18/${getCountryCode(flag)}.png`;
 
   const getByValue = (value: string) =>
-    convertedCountries.find(item => (item.value = value));
+    convertedCountries.find(item => item.value == value);
 
   return {
     getAll,
