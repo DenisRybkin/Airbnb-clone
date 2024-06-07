@@ -45,22 +45,23 @@ export const RegisterModal = () => {
   };
 
   const handleSuccess = () => {
-    toast.success('Success');
+    toast.success('Вы зарегестрировались');
     registerModal.onClose();
     loginModal.onOpen();
   };
+
   const submitHandler: SubmitHandler<RegisterDto> = data => {
     setIsLoading(true);
     axios
       .post('/api/register', data)
       .then(handleSuccess)
-      .catch(() => toast.error('Something went wrong ..'))
+      .catch(() => toast.error('Что-то пошло не так...'))
       .finally(() => setIsLoading(false));
   };
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Headings title="Welcome to Airbnb" subtitle="Create an account!" />
+      <Headings title="Добро пожаловать в Airbnb" subtitle="Создайте аккаунт!" />
       <Input<RegisterDto>
         id="email"
         label="Email"
@@ -71,7 +72,7 @@ export const RegisterModal = () => {
       />
       <Input<RegisterDto>
         id="name"
-        label="Name"
+        label="Имя"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -80,7 +81,7 @@ export const RegisterModal = () => {
       <Input<RegisterDto>
         id="password"
         type="password"
-        label="Password"
+        label="Пароль"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -94,24 +95,24 @@ export const RegisterModal = () => {
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label="Продолжить с Google"
         onClick={signInByGoogle}
         icon={FcGoogle}
       />
       <Button
         outline
-        label="Continue with Github"
+        label="Продолжить с Github"
         onClick={signInByGithub}
         icon={AiFillGithub}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
-          <div>Already fave an account?</div>
+          <div>Уже есть аккаунт?</div>
           <div
             onClick={handleOpenLoginModal}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Lig in
+            Войти
           </div>
         </div>
       </div>
@@ -122,8 +123,8 @@ export const RegisterModal = () => {
     <Modal
       totalDisabled={isLoading}
       isOpen={registerModal.isOpen}
-      title="Register"
-      actionLabel="Continue"
+      title="Регистрация"
+      actionLabel="Продолжить"
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(submitHandler)}
       body={bodyContent}

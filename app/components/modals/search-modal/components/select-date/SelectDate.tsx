@@ -12,8 +12,8 @@ export const SelectDate: React.FC<SelectDateProps> = props => {
   return (
     <div className="flex flex-col gap-8">
       <Headings
-        title="When do you plan to go?"
-        subtitle="Make sure everyone is free!"
+        title="Когда ты планируешь поехать?"
+        subtitle="Убедитесь, что все свободны!"
       />
       <Calendar value={props.value} onChange={props.onChange} />
     </div>

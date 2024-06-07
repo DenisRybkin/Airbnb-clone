@@ -42,14 +42,14 @@ export const ImageUpload: React.FC<ImageUploadProps> = props => {
           onClick={() => open?.()}
         >
           <TbPhotoPlus size={50} />
-          <div className="font-semibold text-lg">Click to upload</div>
+          <div className="font-semibold text-lg">Нажмите, чтобы загрузить</div>
           {props.value && (
             <div className="absolute inset-0 w-full h-full">
               <Image
                 fill
                 style={{ objectFit: 'cover' }}
                 src={props.value}
-                alt="Upload"
+                alt="Загрузка"
               />
             </div>
           )}

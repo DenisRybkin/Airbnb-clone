@@ -26,7 +26,7 @@ export const TripsClient: React.FC<TripsClientProps> = props => {
       axios
         .delete('/api/reservations/' + id)
         .then(() => {
-          toast.success('Reservation canceled');
+          toast.success('Бронирование отменено');
           router.refresh();
         })
         .catch(error => toast.error(error?.response?.data?.error))
@@ -38,8 +38,8 @@ export const TripsClient: React.FC<TripsClientProps> = props => {
   return (
     <Container>
       <Headings
-        title="Trips"
-        subtitle="Where you've been and where you're going"
+        title="Поездки"
+        subtitle="Где ты был и куда направляешься"
       />
       <div
         className="
@@ -62,7 +62,7 @@ export const TripsClient: React.FC<TripsClientProps> = props => {
             actionId={reservation.id}
             onAction={handleCancelTrip}
             disabled={deletingId == reservation.id}
-            actionLabel="Cancel reservation"
+            actionLabel="Отменить бронирование"
           />
         ))}
       </div>

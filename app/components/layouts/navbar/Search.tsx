@@ -5,6 +5,8 @@ import { differenceInDays } from 'date-fns';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { BiSearch } from 'react-icons/bi';
+import { useLocation } from 'react-use';
+import { declension, useDeclension } from '@/app/hooks/useDeclension';
 export const Search = () => {
   const searchModal = useSearchModal();
   const params = useSearchParams();
@@ -17,7 +19,7 @@ export const Search = () => {
 
   const locationLabel = useMemo(
     () =>
-      locationValue ? getByValue(locationValue as string)?.label : 'Anywhere',
+      locationValue ? getByValue(locationValue as string)?.rusLabel : 'Где-то',
     [locationValue, getByValue]
   );
 
@@ -29,14 +31,14 @@ export const Search = () => {
 
       if (diff == 0) diff = 1;
 
-      return `${diff} Days`;
+      return `${diff} ${declension(diff, ['День', 'Дня', 'Дней'])}`;
     }
 
-    return 'Any Week';
+    return 'Когда-то';
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(
-    () => (guestCount ? `${guestCount} Guests` : 'Add Guests'),
+    () => (guestCount ? `${declension(Number(guestCount), ['Гость', 'Гостя', 'Гостей'])}` : 'Добавить Гостей'),
     [guestCount]
   );
 

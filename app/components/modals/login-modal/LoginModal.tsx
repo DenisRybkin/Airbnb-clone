@@ -3,10 +3,9 @@ import { Button } from '@/app/components/base/button/Button';
 import { Headings } from '@/app/components/base/headings/Headings';
 import { useLoginModal } from '@/app/store/hooks/useLoginModal';
 import { useRegisterModal } from '@/app/store/hooks/useRegisterModal';
-import axios from 'axios';
 import { signIn, SignInResponse } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { AiFillGithub } from 'react-icons/ai';
@@ -49,7 +48,7 @@ export const LoginModal = () => {
     if (res?.ok) {
       reset();
       loginModal.onClose();
-      toast.success('Logged in');
+      toast.success('Вы вошли в систему');
       router.refresh();
     }
     if (res?.error) toast.error(res.error);
@@ -65,7 +64,7 @@ export const LoginModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Headings title="Welcome back" subtitle="Login to your account!" />
+      <Headings title="С возвращением" subtitle="Войдите в аккаунт!" />
       <Input<LoginDto>
         id="email"
         label="Email"
@@ -77,7 +76,7 @@ export const LoginModal = () => {
       <Input<LoginDto>
         id="password"
         type="password"
-        label="Password"
+        label="Пароль"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -91,24 +90,24 @@ export const LoginModal = () => {
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label="Продолжить с Google"
         onClick={signInByGoogle}
         icon={FcGoogle}
       />
       <Button
         outline
-        label="Continue with Github"
+        label="Продолжить с Github"
         onClick={signInByGithub}
         icon={AiFillGithub}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
-          <div>First time using Airbnb?</div>
+          <div>Впервые пользуетесь Airbnb?</div>
           <div
             onClick={handleOpenRegisterModal}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Create an account
+            Создайте аккаунт
           </div>
         </div>
       </div>
@@ -119,8 +118,8 @@ export const LoginModal = () => {
     <Modal
       totalDisabled={isLoading}
       isOpen={loginModal.isOpen}
-      title="Login"
-      actionLabel="Continue"
+      title="Вход"
+      actionLabel="Продолжить"
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(submitHandler)}
       body={bodyContent}

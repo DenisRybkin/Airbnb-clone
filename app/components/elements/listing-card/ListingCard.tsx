@@ -66,14 +66,14 @@ export const ListingCard: React.FC<ListingCardProps> = props => {
           </div>
         </div>
         <div className="font-semibold text-lg">
-          {location?.region}, {location?.label}
+          {location?.region}, {location?.rusLabel}
         </div>
         <div className="font-light text-neutral-500">
           {reservationDate || props.data.category?.name}
         </div>
         <div className="flex flex-row items-center gap-1">
           <div className="font-semibold"> $ {price}</div>
-          {reservationDate && <div className="font-light">night</div>}
+          {reservationDate && <div className="font-light">{reservationDate}</div>}
         </div>
         {props.onAction && props.actionLabel && (
           <Button

@@ -17,16 +17,16 @@ export const EmptyState: React.FC<EmptyStateProps> = props => {
   return (
     <div className="h-[60vh] flex flex-col gap-2 justify-center items-center">
       <Headings
-        title={props.title ?? 'No exact matches'}
+        title={props.title ?? 'Совпадений не найденно'}
         isCenter
         subtitle={
-          props.subtitle ?? 'Try changing or removing some of your filters'
+          props.subtitle ?? 'Попробуйте изменить или удалить некоторые из ваших фильтров'
         }
       />
       <div className="w-48 mt-4">
         <Button
           outline
-          label="Remove all filters"
+          label="Убрать все фильтры"
           onClick={handleResetFilters}
         />
       </div>

@@ -14,12 +14,12 @@ export const SelectDescription: React.FC<SelectDescriptionProps> = props => {
   return (
     <div className="flex flex-col gap-8">
       <Headings
-        title="How would you description your place?"
-        subtitle="Short and sweet works best!"
+        title="Как бы вы описали свое заведение?"
+        subtitle="Коротко и сладно получается лучше всего!"
       />
       <Input
         id="title"
-        label="Title"
+        label="Заголовок"
         register={props.register}
         required
         errors={props.errors}
@@ -28,7 +28,7 @@ export const SelectDescription: React.FC<SelectDescriptionProps> = props => {
       <hr />
       <Input
         id="description"
-        label="Description"
+        label="Описание"
         register={props.register}
         required
         errors={props.errors}

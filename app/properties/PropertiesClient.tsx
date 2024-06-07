@@ -26,7 +26,7 @@ export const PropertiesClient: React.FC<PropertiesClientProps> = props => {
       axios
         .delete('/api/listings/' + id)
         .then(() => {
-          toast.success('Listing deleted');
+          toast.success('Объявление удалено');
           router.refresh();
         })
         .catch(error => toast.error(error?.response?.data?.error))
@@ -37,7 +37,7 @@ export const PropertiesClient: React.FC<PropertiesClientProps> = props => {
 
   return (
     <Container>
-      <Headings title="Properties" subtitle="List of your properties" />
+      <Headings title="Свойства" subtitle="Список ваших объектов недвижимости" />
       <div
         className="
             mt-10 grid
@@ -58,7 +58,7 @@ export const PropertiesClient: React.FC<PropertiesClientProps> = props => {
             actionId={listing.id}
             onAction={handleCancelProperty}
             disabled={deletingId == listing.id}
-            actionLabel="Delete property"
+            actionLabel="Удалить объявление"
           />
         ))}
       </div>

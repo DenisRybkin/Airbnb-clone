@@ -21,7 +21,7 @@ export const ListingReservation: React.FC<ListingReservationProps> = props => {
     <div className="bg-white rounded-xl border-[1px] border-neutral-2 overflow-hidden">
       <div className="flex flex-row items-center gap-1 p-4">
         <div className="text-2xl font-semibold">$ {props.price}</div>
-        <div className="font-light text-neutral-600">night</div>
+        <div className="font-light text-neutral-600">ночь</div>
       </div>
       <hr />
       <Calendar
@@ -38,7 +38,7 @@ export const ListingReservation: React.FC<ListingReservationProps> = props => {
         />
       </div>
       <div className="p-4 flex flex-row items-center justify-between font-semibold text-lg">
-        <div>Total</div>
+        <div>Итого</div>
         <div>$ {props.totalPrice}</div>
       </div>
     </div>

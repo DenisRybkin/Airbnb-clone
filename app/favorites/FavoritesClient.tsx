@@ -12,7 +12,7 @@ interface FavoritesClientProps {
 export const FavoritesClient: React.FC<FavoritesClientProps> = props => {
   return (
     <Container>
-      <Headings title="Favorites" subtitle="List of places you favorite!" />
+      <Headings title="Избранное" subtitle="Список ваших любимых мест!" />
       <div
         className="
           mt-10

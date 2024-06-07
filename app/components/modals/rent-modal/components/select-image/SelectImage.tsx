@@ -11,8 +11,8 @@ export const SelectImage: React.FC<SelectImageProps> = props => {
   return (
     <div className="flex flex-col gap-8">
       <Headings
-        title="Add a photo of your"
-        subtitle="Show guests what your place looks like"
+        title="Добавьте фотографию вашего"
+        subtitle="Покажите гостям, как выглядит ваше заведение"
       />
       <ImageUpload {...props} />
     </div>

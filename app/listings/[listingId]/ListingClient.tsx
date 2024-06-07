@@ -8,7 +8,6 @@ import { useLoginModal } from '@/app/store/hooks/useLoginModal';
 import { ListingDto } from '@/app/types/DTO/listing';
 import { ReservationDto } from '@/app/types/DTO/reservation';
 import { UserDto } from '@/app/types/DTO/user';
-import { Reservation } from '@prisma/client';
 import axios from 'axios';
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 import { useRouter } from 'next/navigation';
@@ -67,12 +66,12 @@ export const ListingClient: React.FC<ListingClientProps> = props => {
         listingId: props.listing?.id,
       })
       .then(() => {
-        toast.success('Listing reserved!');
+        toast.success('Жилье зарезервировано!');
         setDateRange(initialDateRange);
         router.push('/trips');
         router.refresh();
       })
-      .catch(() => toast.error('Something went wrong'))
+      .catch(() => toast.error('Что-то пошло не так...'))
       .finally(() => setIsLoading(false));
   }, [
     totalPrice,

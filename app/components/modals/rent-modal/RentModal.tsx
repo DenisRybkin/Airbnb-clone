@@ -91,9 +91,9 @@ export const RentModal = (props: RentModalProps) => {
       });
     };
 
-  const actionLabel: string = step == STEPS.PRICE ? 'Create' : 'Next';
+  const actionLabel: string = step == STEPS.PRICE ? 'Создать' : 'Дальше';
   const secondaryLabel: string | undefined =
-    step == STEPS.CATEGORY ? undefined : 'Back';
+    step == STEPS.CATEGORY ? undefined : 'Назад';
 
   const validateByCondition =
     (withNextStep?: boolean) => (condition: boolean, key: keyof RentDto) => {
@@ -128,13 +128,13 @@ export const RentModal = (props: RentModalProps) => {
     axios
       .post('/api/listings', data)
       .then(() => {
-        toast.success('Listing Created');
+        toast.success('Объявление создано!');
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
-      .catch(err => toast.error('Something went wrong...'))
+      .catch(err => toast.error('Что-то пошло не так...'))
       .finally(() => setIsLoading(false));
   };
 
@@ -197,7 +197,7 @@ export const RentModal = (props: RentModalProps) => {
   return (
     <Modal
       isOpen={rentModal.isOpen}
-      title="Airbnb your home!"
+      title="Airbnb - ваш дом!"
       onSubmit={handleSubmit(handleCreate)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryLabel}

@@ -15,8 +15,8 @@ export const SelectCategory: React.FC<SelectCategoryProps> = props => {
   return (
     <div className="flex flex-col gap-8">
       <Headings
-        title="Which of these best describes your place?"
-        subtitle="Pick a category"
+        title="Что из этого лучше всего описывает ваше отель?"
+        subtitle="Выберите категорию"
       />
       <div
         className="

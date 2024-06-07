@@ -24,7 +24,7 @@ export const ListingHead: React.FC<ListingHeadProps> = props => {
     <>
       <Headings
         title={props.title}
-        subtitle={`${location?.region}, ${location?.label}`}
+        subtitle={`${location?.region}, ${location?.rusLabel}`}
       />
       <div className="w-full h-[60vh] overflow-hidden rounded-xl relative">
         <Image

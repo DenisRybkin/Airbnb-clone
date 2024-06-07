@@ -13,19 +13,19 @@ export const CountrySelect: React.FC<CountrySelectProps> = props => {
   return (
     <div>
       <Select
-        placeholder="Anywhere"
+        placeholder="Где-то"
         isClearable
         options={getAll()}
         value={props.value}
         onChange={props.onChange as (value: Country | null) => void}
-        formatOptionLabel={(option: any) => (
+        formatOptionLabel={(option: Country) => (
           <div
             className="
           flex flex-row items-center gap-3"
           >
             <div>{<img src={getFlagUrl(option.flag)} alt="flag" />}</div>
             <div>
-              {option.label},
+              {option.rusLabel},
               <span className="text-neutral-500 ml-1">{option.region}</span>
             </div>
           </div>

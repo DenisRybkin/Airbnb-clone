@@ -58,7 +58,7 @@ export const UserMenu: React.FC<UserMenuProps> = props => {
             cursor-pointer
           "
         >
-          Airbnb your home
+          Airbnb - мой дом
         </div>
         <div
           onClick={toggleOpen}
@@ -104,39 +104,39 @@ export const UserMenu: React.FC<UserMenuProps> = props => {
               <>
                 <MenuItem
                   onClick={handleClickMenuItem(handleRedirectToTrips)}
-                  label="My trips"
+                  label="Мои поездки"
                 />
                 <MenuItem
                   onClick={handleClickMenuItem(handleRedirectToFavorites)}
-                  label="My favorites"
+                  label="Мои избранные"
                 />
                 <MenuItem
                   onClick={handleClickMenuItem(handleRedirectToReservations)}
-                  label="My reservations"
+                  label="Мои брони"
                 />
                 <MenuItem
                   onClick={handleClickMenuItem(handleRedirectToProperties)}
-                  label="My properties"
+                  label="Моя собственность"
                 />
                 <MenuItem
                   onClick={handleClickMenuItem(rentModal.onOpen)}
-                  label="Airbnb my home"
+                  label="Airbnb - мой дом"
                 />
                 <hr />
                 <MenuItem
                   onClick={handleClickMenuItem(signOut)}
-                  label="Log out"
+                  label="Выйти"
                 />
               </>
             ) : (
               <>
                 <MenuItem
                   onClick={handleClickMenuItem(loginModal.onOpen)}
-                  label="Login"
+                  label="Войти"
                 />
                 <MenuItem
                   onClick={handleClickMenuItem(registerModal.onOpen)}
-                  label="Sign up"
+                  label="Зарегистрироваться"
                 />
               </>
             )}

@@ -10,7 +10,7 @@ const ReservationsPage = async () => {
   if (!currentUser)
     return (
       <ClientOnly>
-        <EmptyState title="Unauthorized" subtitle="Please login" />
+        <EmptyState title="Вы неавторизованны" subtitle="Пожалуйста войдите" />
       </ClientOnly>
     );
 
@@ -22,8 +22,8 @@ const ReservationsPage = async () => {
     return (
       <ClientOnly>
         <EmptyState
-          title="No reservations found"
-          subtitle="Looks like you have no reservations on your properties"
+          title="Не найдено никаких бронирований"
+          subtitle="Похоже, у вас нет бронирований на вашу недвижимость"
         />
       </ClientOnly>
     );

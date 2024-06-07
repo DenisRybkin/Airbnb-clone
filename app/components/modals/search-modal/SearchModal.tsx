@@ -36,12 +36,12 @@ export const SearchModal = () => {
   });
 
   const actionLabel = useMemo(
-    () => (step == STEPS.INFO ? 'Search' : 'Next'),
+    () => (step == STEPS.INFO ? 'Поиск' : 'Дальше'),
     [step]
   );
 
   const secondaryActionLabel = useMemo(
-    () => (step == STEPS.LOCATION ? undefined : 'Back'),
+    () => (step == STEPS.LOCATION ? undefined : 'Назад'),
     [step]
   );
 
@@ -74,7 +74,6 @@ export const SearchModal = () => {
       },
       { skipNull: true }
     );
-    console.log(url);
     setStep(STEPS.LOCATION);
     searchModal.onClose();
     router.push(url);
@@ -107,7 +106,7 @@ export const SearchModal = () => {
       isOpen={searchModal.isOpen}
       onClose={searchModal.onClose}
       onSubmit={handleSubmit}
-      title="Filters"
+      title="Фильтры"
       actionLabel={actionLabel}
       secondaryAction={step == STEPS.LOCATION ? undefined : handleBack}
       secondaryActionLabel={secondaryActionLabel}

@@ -30,9 +30,9 @@ export const ReservationsClient: React.FC<ReservationsClientProps> = props => {
         .then(res => {
           router.refresh();
           if (res.data.count == 0) throw new Error();
-          toast.success('Reservation cancelled');
+          toast.success('Бронирование отменено');
         })
-        .catch(() => toast.error('Something went wrong...'))
+        .catch(() => toast.error('Что-то пошло не так...'))
         .finally(() => setDeletingId(''));
     },
     [router]
@@ -40,7 +40,7 @@ export const ReservationsClient: React.FC<ReservationsClientProps> = props => {
 
   return (
     <Container>
-      <Headings title="Reservations" subtitle="Bookings on your properties" />
+      <Headings title="Бронирование" subtitle="Бронирование вашей недвижимости" />
       <div
         className="
           mt-10
@@ -62,7 +62,7 @@ export const ReservationsClient: React.FC<ReservationsClientProps> = props => {
             actionId={reservation.id}
             onAction={handleCancelReservation}
             disabled={deletingId == reservation.id}
-            actionLabel="Cancel guest reservation"
+            actionLabel="Отменить бронирование для гостей"
           />
         ))}
       </div>

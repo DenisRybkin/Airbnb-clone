@@ -28,8 +28,8 @@ export const SelectLocation: React.FC<SelectLocationProps> = props => {
   return (
     <div className="flex flex-col gap-8">
       <Headings
-        title="Where is your place is located?"
-        subtitle="Help guests find you!"
+        title="Где находится ваш отель?"
+        subtitle="Помогите гостям найти вас!"
       />
       <CountrySelect value={props.value} onChange={props.onChange} />
       <Map center={props.value?.latlng} />

@@ -5,6 +5,7 @@ export interface Country {
   flag: string;
   latlng: [number, number];
   region: string;
+  rusLabel: string
 }
 
 const convertedCountries: Country[] = countries.map(country => ({
@@ -13,6 +14,7 @@ const convertedCountries: Country[] = countries.map(country => ({
   flag: country.flag,
   latlng: country.latlng,
   region: country.region,
+  rusLabel: country.translations.rus.common
 }));
 
 interface IUseCountries {

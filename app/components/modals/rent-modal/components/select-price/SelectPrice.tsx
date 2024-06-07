@@ -15,13 +15,13 @@ export const SelectPrice: React.FC<SelectPriceProps> = props => {
   return (
     <div className="flex flex-col gap-8">
       <Headings
-        title="Now, set your price"
-        subtitle="How much do you charge per night?"
+        title="Теперь назначьте свою цену"
+        subtitle="Сколько вы берете за ночь?"
       />
       <Input
         formatPrice
         id="price"
-        label="Price"
+        label="Цена"
         register={props.register}
         errors={props.errors}
         type="number"

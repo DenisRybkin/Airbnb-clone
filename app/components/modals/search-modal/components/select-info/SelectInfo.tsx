@@ -17,22 +17,22 @@ export const SelectInfo: React.FC<SelectInfoProps> = props => {
     <div className="flex flex-col gap-8">
       <Headings title="More information" subtitle="Find your perfect place" />
       <Counter
-        title="Guests"
-        subtitle="How many guests ara coming?"
+        title="Гости"
+        subtitle="Сколько гостей приедет?"
         value={props.guestsCount}
         onChange={props.onChangeGuests}
       />
       <hr />
       <Counter
-        title="Rooms"
-        subtitle="How many guests do you need?"
+        title="Комнаты"
+        subtitle="Сколько комнат вам нужно?"
         value={props.roomsCount}
         onChange={props.onChangeRooms}
       />
       <hr />
       <Counter
-        title="Bathrooms"
-        subtitle="How many bathrooms do you need?"
+        title="Ванные комнаты"
+        subtitle="Сколько ванных комнат вам нужно?"
         value={props.bathroomsCount}
         onChange={props.onChangeBathrooms}
       />

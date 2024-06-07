@@ -10,7 +10,7 @@ const FavoritesPage = async () => {
   if (!currentUser)
     return (
       <ClientOnly>
-        <EmptyState title="Unauthorized" subtitle="Please login" />
+        <EmptyState title="Вы не авторизированы" subtitle="Пожалуйста, войдите в систему" />
       </ClientOnly>
     );
 
@@ -20,8 +20,8 @@ const FavoritesPage = async () => {
     return (
       <ClientOnly>
         <EmptyState
-          title="No favorites found"
-          subtitle="Looks like you have no favorite listings."
+          title="Избранное не найдено"
+          subtitle="Похоже, у вас нет избранных списков."
         />
       </ClientOnly>
     );
